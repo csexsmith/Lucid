@@ -1,23 +1,25 @@
+import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
+
 export default {
-    async fetch(request, env, ctx) {
-      try {
-        const url = new URL(request.url);
-  
-        // Serve static assets from the dist folder
-        const filePath = url.pathname === "/" ? "/index.html" : url.pathname;
-        const assetUrl = new URL(`dist${filePath}`, import.meta.url);
-  
-        const response = await fetch(assetUrl);
-  
-        if (response.status === 404) {
-          // If not found, serve index.html for client-side routing
-          return await fetch(new URL(`dist/index.html`, import.meta.url));
+  async fetch(request, env, ctx) {
+    try {
+      return await getAssetFromKV(
+        {
+          request,
+          waitUntil: ctx.waitUntil.bind(ctx),
+        },
+        {
+          mapRequestToAsset: (req) => {
+            let url = new URL(req.url);
+            if (url.pathname === '/' || url.pathname.startsWith('/index')) {
+              return new Request(`${url.origin}/index.html`, req);
+            }
+            return req;
+          },
         }
-  
-        return response;
-      } catch (error) {
-        return new Response(`Error: ${error.message}`, { status: 500 });
-      }
-    },
-  };
-  
+      );
+    } catch (error) {
+      return new Response(`Error: ${error.message}`, { status: 500 });
+    }
+  },
+};
