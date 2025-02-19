@@ -9,7 +9,7 @@ compatibility_date = "2025-02-18"
 enabled = true
 
 [site]
-bucket = "./dist"
+bucket = "./build"
 
 [build]
 command = "npm run build"
