@@ -279,7 +279,7 @@ function createRandomParagraph(lines, direction) {
   const middle = pickOne(middles);
   const directional = pickOne(directionals);
 
-  return `${intro} ${pickOne(synonymsLines)} ${middle} ${directional}`;
+  return `${intro} ${pickOne(synonymsLines)}${middle} ${directional}`;
 }
 
 async function callAiApi(lines, direction) {
