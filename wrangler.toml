@@ -13,3 +13,7 @@ bucket = "./build"
 
 [build]
 command = "npm run build"
+
+[[kv_namespaces]]
+binding = "_my-react-worker-workers_sites_assets"   # The variable you'll use in your Worker script
+id = "e867712a91374e779e226f9d0392c380"   # The actual KV namespace ID from Cloudflare dashboard
