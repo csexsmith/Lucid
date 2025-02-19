@@ -1,0 +1,41 @@
+/* index.css */
+
+/* Reset defaults */
+html, body .App{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background-color: #000000; /* Dark background */
+  color: #e1dbeb;           /* White text */
+}
+
+/* Make sure all elements inherit box-sizing */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Force links to be white or inherit the parent's color */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* index.css */
+
+button {
+  color: #ccc2dc;       /* Force all button text to be white */
+  background: none;  /* Optional: remove default button background */
+  border: none;      /* Optional: remove default button border */
+  /* ... any other default button styles you want ... */
+}
+
+
+[data-radix-navigation-menu-link] {
+  color: #ccc2dc !important;
+}
