@@ -1,0 +1,6 @@
+name = "my-react-worker"
+type = "javascript"
+main = "worker.js"
+account_id = "feb3dd8377172a12b6d69550a5217c91"  # Replace with your actual Cloudflare account ID
+workers_dev = true
+compatibility_date = "2025-02-18"
